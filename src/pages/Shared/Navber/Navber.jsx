@@ -3,19 +3,19 @@ const Navber = () => {
     
   const navItem = (
     <>
-      <li>
+      <li className='text-lg uppercase'>
         <a>Home</a>
       </li>
-      <li>
+      <li className='text-lg uppercase'>
         <a>Services</a>
       </li>
-      <li>
-        <a>Contact1</a>
+      <li className='text-lg uppercase'>
+        <a>Contact</a>
       </li>
     </>
   );
   return (
-    <div className="h-[90px] navbar fixed opacity-80 bg-black text-white z-30">
+    <div className="h-[90px] md:px-8 navbar fixed opacity-80 bg-black text-orange-500 font-semibold z-30">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
