@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import Heading from "../../../Components/Heading/Heading";
 import useService from "../../../Hook/useService";
 import ServiceCard from "./ServiceCard";
@@ -14,7 +15,7 @@ const Services = () => {
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </div>
-      <p className="text-center mb-20"><button className="btn btn-warning text-white">BOOKING NOW</button></p>
+      <Link to="/allservices"><p className="text-center mb-20"><button className="btn btn-warning text-white">BOOKING NOW</button></p></Link>
     </div>
   );
 };

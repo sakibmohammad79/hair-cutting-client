@@ -1,6 +1,6 @@
 const Banner = () => {
     return (
-        <div className="bg-[url('https://i.postimg.cc/DfCTMfjF/img-99.webp')] bg-cover bg-center h-screen brightness-40">
+        <div className="bg-[url('https://i.postimg.cc/5jcGcVm1/pexels-cottonbro-studio-3998421.jpg')] bg-cover bg-center h-screen brightness-90">
             <div className="flex-col pt-60 justify-center items-center text-center text-white space-y-3">
                 <img className="mx-auto" src="https://i.postimg.cc/kMt8BWF2/logo-1.webp" alt="" />
                 <h1 className="text-6xl font-bold">HAIRCUT & SHAVES</h1>

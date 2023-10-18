@@ -1,4 +1,4 @@
-import Heading from "../../../Components/Heading/Heading";
+
 
 
 const ServiceCard = ({service}) => {
