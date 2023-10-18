@@ -1,0 +1,50 @@
+[
+    {
+      "name": "Beard Styling",
+      "details": "A standard haircut service tailored for men. Our skilled barbers provide a precise and stylish cut for a fresh and confident look.",
+      "image": "https://i.postimg.cc/dtvDHhX3/img-17-1.webp",
+      "price": "15"
+    },
+    {
+      "name": "Hair Styling",
+      "details": "Our Beard Trim service includes expert beard shaping and trimming to help you achieve your desired beard style. Leave with a well-groomed beard.",
+      "image": "https://i.postimg.cc/TY91ZRM9/img-18-1.webp",
+      "price": "20"
+    },
+    {
+      "name": "Men's Shave",
+      "details": "Experience a traditional straight razor shave at its finest. Our skilled barbers use top-quality products for a smooth and rejuvenating shave.",
+      "image": "https://i.postimg.cc/P5Vx52qv/img-19-1.webp",
+      "price": "20"
+    },
+    {
+      "name": "Men's Color",
+      "details": "The Buzz Cut is a short, all-around clipper cut that's both comfortable and stylish. Our barbers ensure a clean and precise look for you.",
+      "image": "https://i.postimg.cc/QxxhK1wQ/img-20-1.webp",
+      "price": "16"
+    },
+    {
+      "name": "Hair Coloring",
+      "details": "Elevate your style with our Hair Coloring service. Whether it's subtle highlights or bold color, we'll help you achieve your desired look.",
+      "image": "https://i.postimg.cc/dtvDHhX3/img-17-1.webp",
+      "price": "30"
+    },
+    {
+      "name": "Moustache Trim",
+      "details": "Our Moustache Trim service ensures your moustache looks sharp and well-groomed. We take pride in perfecting this distinctive facial feature.",
+      "image": "https://i.postimg.cc/TY91ZRM9/img-18-1.webp",
+      "price": "15"
+    },
+    {
+      "name": "Hair Styling",
+      "details": "Experience professional styling and blow-dry for men. Our barbers create tailored looks that are stylish and easy to maintain.",
+      "image": "https://i.postimg.cc/P5Vx52qv/img-19-1.webp",
+      "price": "25"
+    },
+    {
+      "name": "Hot Towel Treatment",
+      "details": "Indulge in a relaxing Hot Towel Treatment for men. Enjoy soothing hot towels and a gentle massage to leave you revitalized and refreshed.",
+      "image": "https://i.postimg.cc/QxxhK1wQ/img-20-1.webp",
+      "price": "15"
+    }
+  ]

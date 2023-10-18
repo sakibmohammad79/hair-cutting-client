@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 const Navber = () => {
     
   const navItem = (
     <>
       <li className='text-lg uppercase'>
-        <a>Home</a>
+        <Link>Home</Link>
       </li>
       <li className='text-lg uppercase'>
-        <a>Services</a>
+        <Link to='/allservices'>Services</Link>
       </li>
       <li className='text-lg uppercase'>
-        <a>Contact</a>
+        <Link>Contact</Link>
       </li>
     </>
   );
