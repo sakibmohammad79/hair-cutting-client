@@ -6,7 +6,6 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   const [data] = useService();
-  console.log(data);
   return (
     <div>
         <Heading heading={'SERVICES OFFERED'} subHeading={'DETAILED PRICE LIST'}></Heading>

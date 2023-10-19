@@ -14,7 +14,6 @@ const Review = () => {
     fetch("http://localhost:5000/review")
       .then((res) => res.json())
       .then((data) => setReviews(data));
-    console.log(data);
   }, []);
   return (
     <div className="bg-[#0A0B0B] py-28 my-20">
@@ -38,7 +37,7 @@ const Review = () => {
         className="mySwiper"
       >
         {reviews.map((review) => (
-          <SwiperSlide  key={review.id}>
+          <SwiperSlide  key={review._id}>
             <div className="flex justify-center items-center w-[900px] mx-auto gap-8">
                 <img src={review.image} alt="" />
                 <div className="space-y-4">
