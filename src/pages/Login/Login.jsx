@@ -1,40 +1,86 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { authContext } from "../../provider/AuthProvider";
+import { useForm } from "react-hook-form";
+
+
 
 const Login = () => {
-  const [disabled, setDesabled] = useState(true);
-  const loginRef = useRef();
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  const {loginUser} = useContext(authContext);
+  const {
+    register,
+    handleSubmit,
+  } = useForm()
 
-  const handleCaptchaValidate = () => {
-    const user_captcha_value = loginRef.current.value;
-    console.log(user_captcha_value)
+  const onSubmit = (data) => {
+    console.log(data)
+    loginUser(data.email, data.password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
+  }
+
+  const [disabled, setDesabled] = useState(true);
+  const { googleLogInUser,  githubLogInUser} = useContext(authContext);
+
+  const handleCaptchaValidate = (e) => {
+    const user_captcha_value = e.target.value;
+    console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value) == true) {
       toast("Captcha Matched");
       setDesabled(false);
     } else {
       toast("Captcha Does Not Match");
-      setDesabled(true)
+      setDesabled(true);
     }
   };
+
+  const handleLoginByGoogle = () => {
+    googleLogInUser()
+    .then(result => {
+      const googleLoggedinUser = result.user;
+      console.log(googleLoggedinUser)
+    })
+    .catch(error => {
+      console.Console(error);
+    })
+  }
+  const handleLoginByGithub = () => {
+    githubLogInUser()
+    .then(result => {
+      const googleLoggedinUser = result.user;
+      console.log(googleLoggedinUser)
+    })
+    .catch(error => {
+      console.Console(error);
+    })
+  }
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
   return (
     <div className="hero bg-base-200 pt-40 pb-24">
       <div className="card  w-4/12  shadow-md bg-base-100">
-        <form className="card-body">
+        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
             <input
+            {...register("email", { required: true })}
               type="email"
               placeholder="Email"
               className="input input-bordered"
@@ -46,6 +92,7 @@ const Login = () => {
               <span className="label-text">Password</span>
             </label>
             <input
+            {...register("password", { required: true })}
               type="password"
               placeholder="password"
               className="input input-bordered"
@@ -62,19 +109,17 @@ const Login = () => {
               <LoadCanvasTemplate />
             </label>
             <input
-              // onBlur={handleCaptchaValidate}
-              ref={loginRef}
+              onBlur={handleCaptchaValidate}
+              // ref={loginRef}
               type="captcha"
               placeholder="Captcha"
               className="input input-bordered"
               required
             />
           </div>
-          {/* <button className="btn btn-xs mt-2">Validate</button> */}
           <div className="form-control mt-6">
             <input
-              onClick={handleCaptchaValidate}
-              // disabled={disabled}
+              disabled={disabled}
               className="btn btn-warning text-white"
               type="submit"
               value="Please Login"
@@ -89,12 +134,12 @@ const Login = () => {
         </form>
         <div className="divider mt-0 mb-0 px-6">or</div>
         <p className="px-6 pt-6 pb-2 ">
-          <button className="btn btn-outline btn-warning w-full mb-0">
+          <button onClick={handleLoginByGoogle} className="btn btn-outline btn-warning w-full mb-0">
             SignUp By Google
           </button>
         </p>
         <p className="px-6 pb-12 ">
-          <button className="btn btn-outline btn-warning w-full mt-0">
+          <button onClick={handleLoginByGithub} className="btn btn-outline btn-warning w-full mt-0">
             SignUp By GitHub
           </button>
         </p>

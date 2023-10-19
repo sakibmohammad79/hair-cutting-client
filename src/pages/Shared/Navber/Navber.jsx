@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import { useContext } from 'react';
+import { authContext } from '../../../provider/AuthProvider';
 const Navber = () => {
-    
+    const {user,logOut} = useContext(authContext)
+    const handleSignOut = () => {
+      logOut()
+      .then(result => console.log(result))
+      .then(error => {
+        console.log(error);
+      })
+    }
   const navItem = (
     <>
       <li className='text-lg uppercase'>
@@ -48,7 +57,12 @@ const Navber = () => {
         <ul className="menu menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
-      <button className="btn bg-[#D9842F] border-none text-white font-bold">LOGIN</button>
+      {
+        user?
+        <button onClick={handleSignOut} className="btn bg-[#D9842F] border-none text-white font-bold">SignOut</button>
+        :
+        <Link to='/login'><button className="btn bg-[#D9842F] border-none text-white font-bold">LOGIN</button></Link>
+      }
       </div>
     </div>
   );
