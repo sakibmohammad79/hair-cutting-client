@@ -2,20 +2,32 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { authContext } from "../../provider/AuthProvider";
+import { AuthContext} from "../../provider/AuthProvider";
 
 const SignUp = () => {
-  const { registerUser, googleLogInUser,  githubLogInUser} = useContext(authContext);
+  const { registerUser, googleLogInUser,  githubLogInUser,  updateUserProfile } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
   const onSubmit = (data) => {
+    console.log(data);
     registerUser(data.email, data.password)
     .then(result => {
       const googleLoggedinUser = result.user;
       console.log(googleLoggedinUser)
+
+      //update user profile
+      updateUserProfile(data.name, data.photoURL)
+      .then(result => {
+        const googleLoggedinUser = result.user;
+        console.log(googleLoggedinUser)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
     })
     .catch(error => {
       console.log(error);
@@ -108,17 +120,17 @@ const SignUp = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Confirm Password</span>
+              <span className="label-text">PhotoURL</span>
             </label>
             <input
-              {...register("confirmpassword", { required: true })}
-              type="password"
-              placeholder="Confirm Password"
+              {...register("photoURL", { required: true })}
+              type="text"
+              placeholder="photoURL"
               className="input input-bordered"
               required
             />
             {errors.confirmpassword && (
-              <span className="text-red-500">Confirm Password is required</span>
+              <span className="text-red-500">photoURL is required</span>
             )}
           </div>
           <div className="form-control mt-6">

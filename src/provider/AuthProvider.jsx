@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { app } from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 
-export const authContext = createContext(null); 
+export const AuthContext = createContext(null); 
 const AuthProvider = ({children}) => {
     const auth = getAuth(app);
     const [loading, setLoading] = useState(true)
@@ -32,8 +32,8 @@ const AuthProvider = ({children}) => {
     }
 
     const updateUserProfile = (name, photoURL) => {
-           return updateProfile(auth.currentUser, {
-            displayName: {name}, photoURL: {photoURL}
+            updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photoURL
           })
     }
 
@@ -65,9 +65,9 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <authContext.Provider value={userInfo}>
+        <AuthContext.Provider value={userInfo}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     );
 };
 

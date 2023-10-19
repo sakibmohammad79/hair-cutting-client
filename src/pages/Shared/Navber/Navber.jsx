@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import { useContext } from 'react';
-import { authContext } from '../../../provider/AuthProvider';
+import { AuthContext } from '../../../provider/AuthProvider';
+
 const Navber = () => {
-    const {user,logOut} = useContext(authContext)
+    const {user,logOut} = useContext(AuthContext)
     const handleSignOut = () => {
       logOut()
       .then(result => console.log(result))

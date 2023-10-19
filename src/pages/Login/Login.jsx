@@ -7,13 +7,15 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { authContext } from "../../provider/AuthProvider";
+
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 
 const Login = () => {
-  const {loginUser} = useContext(authContext);
+  const [disabled, setDesabled] = useState(true);
+  const { googleLogInUser,  githubLogInUser, loginUser} = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -32,8 +34,7 @@ const Login = () => {
 
   }
 
-  const [disabled, setDesabled] = useState(true);
-  const { googleLogInUser,  githubLogInUser} = useContext(authContext);
+  
 
   const handleCaptchaValidate = (e) => {
     const user_captcha_value = e.target.value;
