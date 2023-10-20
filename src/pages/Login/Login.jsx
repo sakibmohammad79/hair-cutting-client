@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -16,6 +16,8 @@ import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [disabled, setDesabled] = useState(true);
   const { loginUser } = useContext(AuthContext);
   const {
@@ -23,20 +25,21 @@ const Login = () => {
     handleSubmit,
   } = useForm()
 
+  const from = location.state?.from?.pathname || '/';
+
   const onSubmit = (data) => {
     console.log(data)
     loginUser(data.email, data.password)
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser)
+      navigate(from, {replace: true});
     })
     .catch(error => {
       console.log(error);
     })
 
   }
-
-  
 
   const handleCaptchaValidate = (e) => {
     const user_captcha_value = e.target.value;

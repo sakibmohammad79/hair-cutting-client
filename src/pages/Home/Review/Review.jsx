@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
-import { data } from "autoprefixer";
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);

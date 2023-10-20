@@ -1,30 +1,62 @@
 
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext} from "../../provider/AuthProvider";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const password = React.useRef({});
+  
   const { registerUser, updateUserProfile } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    watch,
+    reset
   } = useForm();
+  password.current = watch('password', '');
+  const from = location.state?.from?.pathname || '/';
   const onSubmit = (data) => {
-    console.log(data);
     registerUser(data.email, data.password)
     .then(result => {
       const googleLoggedinUser = result.user;
       console.log(googleLoggedinUser)
+      navigate(from, { replace: true });
 
       //update user profile
       updateUserProfile(data.name, data.photoURL)
       .then(result => {
-        const googleLoggedinUser = result.user;
-        console.log(googleLoggedinUser)
+        console.log(result)
+        const saveUser = {name: data.name, email: data.email}
+        // fetch("http://localhost:5000/user", {
+        //     method: "POST",
+        //     headers: {
+        //       "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify(saveUser),
+        //   })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //       if (data.insertedId) {
+        //         reset();
+        //         navigate(from);
+        //       }
+        //     });
+        axios.post('http://localhost:5000/user', saveUser)
+        .then(res => {
+          if(res.data.insertedId){
+            reset();
+            navigate(from, {replace: true});
+          }
+        })
+        
       })
       .catch(error => {
         console.log(error);
@@ -35,7 +67,7 @@ const SignUp = () => {
       console.log(error);
     })
   }
-
+ 
   return (
     <div>
       <Helmet>
@@ -104,6 +136,18 @@ const SignUp = () => {
               </a>
             </label>
           </div>
+          <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input type="password" {...register("confirmPassword", {
+                      required: true,
+                      validate: (value) => value === password.current || 'Passwords do not match'
+                    })} placeholder="Confirm password" className="input input-bordered" />
+                    {errors.confirmPassword && (
+              <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>
+            )}
+              </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">PhotoURL</span>
