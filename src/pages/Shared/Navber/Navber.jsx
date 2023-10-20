@@ -58,6 +58,7 @@ const Navber = () => {
         <ul className="menu menu-horizontal px-1">{navItem}</ul>
       </div>
       <div className="navbar-end">
+      <img className='w-[50px] rounded-full mr-2 md:mr-4' src={user?.photoURL} alt="" />
       {
         user?
         <button onClick={handleSignOut} className="btn bg-[#D9842F] border-none text-white font-bold">SignOut</button>
