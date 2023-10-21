@@ -5,6 +5,10 @@ import AllServices from "../pages/AllServices/AllServices";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
+import AllUser from "../pages/Dashboard/AllUser/AllUser";
+import ManageServices from "../pages/Dashboard/ManageServices/ManageServices";
+
 
 export const router = createBrowserRouter([
   {
@@ -29,4 +33,18 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: '/dashboard/alluser',
+        element: <AllUser></AllUser>
+      },
+      {
+        path: '/dashboard/manageservices',
+        element: <ManageServices></ManageServices>
+      }
+    ]
+  }
 ]);

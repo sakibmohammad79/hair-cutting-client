@@ -14,14 +14,17 @@ const Navber = () => {
     }
   const navItem = (
     <>
-      <li className='text-lg uppercase'>
+      <li className=' uppercase'>
         <Link>Home</Link>
       </li>
-      <li className='text-lg uppercase'>
+      <li className=' uppercase'>
         <Link to='/allservices'>Services</Link>
       </li>
-      <li className='text-lg uppercase'>
+      <li className=' uppercase'>
         <Link>Contact</Link>
+      </li>
+      <li className=' uppercase'>
+        <Link to='dashboard'>Dashboard</Link>
       </li>
     </>
   );
