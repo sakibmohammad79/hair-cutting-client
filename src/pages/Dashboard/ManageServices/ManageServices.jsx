@@ -1,20 +1,48 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUpload } from "react-icons/fa";
-import Heading from "../../../Components/Heading/Heading";
+
+import Swal from "sweetalert2";
 
 
 const ManageServices = () => {
-    const {data: services = []} = useQuery({
+    const {data: services = [], refetch} = useQuery({
         queryKey: ['service'],
         queryFn: async() => {
             const res = await fetch('http://localhost:5000/service')
             return res.json();
         }
     })
+
+    //user delete
+  const handleDelete = (service) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/service/${service._id}`, {
+          method: 'DELETE'
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Service has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
     return (
-        <div className="w-full px-24">
-            <Heading heading={'All Services'} subHeading={'manage all services'}> </Heading>
-            <div className="overflow-x-auto">
+        <div className="w-full px-12">
+            {/* <Heading heading={'All Services'} subHeading={'manage all services'}> </Heading> */}
+            <div className="overflow-x-auto bg-slate-200 p-6 rounded-lg">
         <table className="table">
           {/* head */}
           <thead>
@@ -41,7 +69,7 @@ const ManageServices = () => {
                     {service.price}
                 </td>
                 <th>
-                  <button className=" text-red-500"><FaTrashAlt size={20}></FaTrashAlt></button>
+                  <button onClick={()=>handleDelete(service)} className=" text-red-500"><FaTrashAlt size={20}></FaTrashAlt></button>
                 </th>
                 <th>
                   <button className=" text-red-500"><FaUpload size={20}></FaUpload></button>

@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AllUser from "../pages/Dashboard/AllUser/AllUser";
 import ManageServices from "../pages/Dashboard/ManageServices/ManageServices";
+import ServiceOrderList from "../pages/Dashboard/ServiceOrderList/ServiceOrderList";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/manageservices',
         element: <ManageServices></ManageServices>
+      },
+      {
+        path: '/dashboard/orderlist',
+        element: <ServiceOrderList></ServiceOrderList>
       }
     ]
   }
