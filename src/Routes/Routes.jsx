@@ -12,6 +12,7 @@ import ServiceOrderList from "../pages/Dashboard/ServiceOrderList/ServiceOrderLi
 import AddService from "../pages/Dashboard/AddService/AddService";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AdminRoute from "./AdminRoute";
 
 
 export const router = createBrowserRouter([
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: '/dashboard/alluser',
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/addreview',
-        element: <AddReview></AddReview>
+        element: <AdminRoute><AddReview></AddReview></AdminRoute>
       },
       {
         path: '/dashboard/mycart',

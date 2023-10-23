@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProviders";
+import { AuthContext } from "../provider/AuthProvider";
+
 
 // Create an Axios instance with a base URL
 const axiosSecure = axios.create({

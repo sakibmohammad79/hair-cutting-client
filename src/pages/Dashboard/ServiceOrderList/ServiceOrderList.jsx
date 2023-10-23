@@ -5,12 +5,12 @@ const ServiceOrderList = () => {
   const { data: orders = [] } = useQuery({
     queryKey: ["orderList"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/cart");
+      const res = await fetch("http://localhost:5000/orderlist");
       return res.json();
     },
   });
   return (
-    <div className="w-full px-12">
+    <div className="w-full px-12 mt-5">
       {/* <Heading heading={'All Order'} subHeading={'Please submit status'}> </Heading> */}
       <div className="overflow-x-auto bg-slate-200 p-6 rounded-lg">
         <table className="table">
