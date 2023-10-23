@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const isAdmin = false;
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -29,8 +29,8 @@ const Dashboard = () => {
         <>
             <li><NavLink to='/dashboard/adminhome'><FaHome></FaHome> Admin Home</NavLink></li>
             <li><NavLink to='/dashboard/manageservices'><FaBars></FaBars> Manage Services </NavLink></li>
-            <li><NavLink to='/dashboard/orderlist'><FaBook></FaBook> Order list</NavLink></li>
-            <li><NavLink to='/dashboard/additem'><FaUtensils></FaUtensils> Add Services</NavLink></li>
+            <li><NavLink to='/dashboard/orderlist '><FaBook></FaBook> Order list</NavLink></li>
+            <li><NavLink to='/dashboard/addservice'><FaUtensils></FaUtensils> Add Services</NavLink></li>
             <li><NavLink to='/dashboard/alluser'><FaUser></FaUser> All Users</NavLink></li>
             </> 
         :
@@ -45,7 +45,7 @@ const Dashboard = () => {
             </div>
             My Cart
             </NavLink></li>
-            <li><NavLink to='/'><FaCalendarAlt></FaCalendarAlt>Add Reivew</NavLink></li>
+            <li><NavLink to='/dashboard/addreview'><FaCalendarAlt></FaCalendarAlt>Add Reivew</NavLink></li>
             </>
         }
         <div className="divider"></div>

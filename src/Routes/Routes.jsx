@@ -9,6 +9,9 @@ import Dashboard from "../Layout/Dashboard";
 import AllUser from "../pages/Dashboard/AllUser/AllUser";
 import ManageServices from "../pages/Dashboard/ManageServices/ManageServices";
 import ServiceOrderList from "../pages/Dashboard/ServiceOrderList/ServiceOrderList";
+import AddService from "../pages/Dashboard/AddService/AddService";
+import AddReview from "../pages/Dashboard/AddReview/AddReview";
+import MyCart from "../pages/Dashboard/MyCart/MyCart";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +52,18 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/orderlist',
         element: <ServiceOrderList></ServiceOrderList>
+      },
+      {
+        path: '/dashboard/addservice',
+        element: <AddService></AddService>
+      },
+      {
+        path: '/dashboard/addreview',
+        element: <AddReview></AddReview>
+      },
+      {
+        path: '/dashboard/mycart',
+        element: <MyCart></MyCart>
       }
     ]
   }
