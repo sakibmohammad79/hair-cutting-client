@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { FaTrashAlt, FaUpload } from "react-icons/fa";
-
+import { FaTrashAlt,  FaUpload} from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
@@ -72,7 +71,7 @@ const ManageServices = () => {
                   <button onClick={()=>handleDelete(service)} className=" text-red-500"><FaTrashAlt size={20}></FaTrashAlt></button>
                 </th>
                 <th>
-                  <button className=" text-red-500"><FaUpload size={20}></FaUpload></button>
+                  <button className=" btn btn-ghost bg-pink-500 btn-sm text-white">Update</button>
                 </th>
               </tr>
             ))}

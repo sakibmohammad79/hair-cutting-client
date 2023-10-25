@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubsCribe();
     };
-  }, [auth]);
+  }, []);
 
   const userInfo = {
     user,

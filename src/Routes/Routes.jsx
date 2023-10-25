@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/addreview',
-        element: <AdminRoute><AddReview></AddReview></AdminRoute>
+        element: <AddReview></AddReview>
       },
       {
         path: '/dashboard/mycart',

@@ -1,9 +1,11 @@
 import { FaBars, FaBook, FaCalendarAlt, FaHome, FaMap, FaShoppingCart, FaShuttleVan, FaUser, FaUtensils, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hook/useAdmin";
+import useCart from "../Hook/useCart";
 
 
 const Dashboard = () => {
+    const [mycart] = useCart()
     // const isAdmin = false;
     const [isAdmin] = useAdmin();
   return (
@@ -42,7 +44,7 @@ const Dashboard = () => {
             <li><NavLink to='/dashboard/payment'><FaWallet></FaWallet> Payment</NavLink></li>
             <li><NavLink to='/'><FaWallet></FaWallet> Payment History</NavLink></li>
             <li><NavLink to='/dashboard/mycart'><div className="indicator">
-            <span className="indicator-item badge badge-secondary">+0</span>
+            <span className="indicator-item badge badge-secondary">{mycart.length || +0}</span>
             <button className="btn btn-sm"><FaShoppingCart></FaShoppingCart></button>
             </div>
             My Cart
