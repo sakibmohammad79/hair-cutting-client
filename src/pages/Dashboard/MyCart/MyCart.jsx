@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../Hook/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [mycart, refetch] = useCart();
@@ -17,7 +18,7 @@ const MyCart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/cart/${cart._id}`, {
-          method: 'DELETE'
+          method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
@@ -34,40 +35,33 @@ const MyCart = () => {
     <div className="w-full px-24">
       <div className="overflow-x-auto">
         <table className="table">
- 
           <thead>
             <tr>
-              <th>
-                Index
-              </th>
+              <th>Index</th>
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
               <th>Delete</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
-            {
-                mycart.map((cart ,index) =>  <tr key={cart._id}>
-                    <th>
-                      {index +1}
-                    </th>
-                    <td>
-                      <div className="flex items-center space-x-3">
-             
-                          <div className="mask mask-squircle w-16 h-16">
-                            <img src={cart.image} alt="Avatar Tailwind CSS Component" />
-                          </div>
-                        </div>
-                        
-        
-                    </td>
-                    <td>
-                     {cart.name}
-                      
-                    </td>
-                    <td>{cart.price}</td>
-                    <th>
+            {mycart.map((cart, index) => (
+              <tr key={cart._id}>
+                <th>{index + 1}</th>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="mask mask-squircle w-16 h-16">
+                      <img
+                        src={cart.image}
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>{cart.name}</td>
+                <td>{cart.price}</td>
+                <th>
                   <button
                     onClick={() => handleDelete(cart)}
                     className=" text-red-500"
@@ -75,8 +69,13 @@ const MyCart = () => {
                     <FaTrashAlt size={20}></FaTrashAlt>
                   </button>
                 </th>
-                  </tr>)
-            }
+                <th>
+                  <Link to="/dashboard/payment">
+                    <button className="btn btn-secondary btn-sm">Pay</button>
+                  </Link>
+                </th>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

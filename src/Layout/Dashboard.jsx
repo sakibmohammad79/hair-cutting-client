@@ -41,7 +41,7 @@ const Dashboard = () => {
         <>
             <li><NavLink to='/dashboard/userhome'><FaHome></FaHome> User Home</NavLink></li>
             
-            <li><NavLink to='/dashboard/payment'><FaWallet></FaWallet> Payment</NavLink></li>
+            <li><NavLink to='/dashboard/myservice'><FaWallet></FaWallet> My service</NavLink></li>
             <li><NavLink to='/'><FaWallet></FaWallet> Payment History</NavLink></li>
             <li><NavLink to='/dashboard/mycart'><div className="indicator">
             <span className="indicator-item badge badge-secondary">{mycart.length || +0}</span>

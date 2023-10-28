@@ -13,6 +13,7 @@ import AddService from "../pages/Dashboard/AddService/AddService";
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import AdminRoute from "./AdminRoute";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/mycart',
         element: <MyCart></MyCart>
+      },
+      {
+        path: '/dashboard/payment',
+        element: <Payment></Payment>
       }
     ]
   }
