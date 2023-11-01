@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 
 const imageHostingSecret = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
-console.log('imageSecret', imageHostingSecret);
+//console.log('imageSecret', imageHostingSecret);
 
 const AddService = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -31,7 +31,7 @@ const AddService = () => {
       if(imageHostingData.success === true){
         const {name, price, details} = data;
         const newService = {name, price: parseFloat(price), details, image: imageHostingData?.data?.display_url}
-        console.log('newService', newService);
+        //console.log('newService', newService);
         axiosSecure.post('/service', newService)
         .then(res => {
           if(res.data.insertedId){

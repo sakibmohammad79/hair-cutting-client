@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  console.log(user);
+  //console.log(user);
 
   const registerUser = (email, password) => {
     setLoading(true);
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
         axios
           .post("http://localhost:5000/jwt", { email: currentUser.email })
           .then((res) => {
-            console.log(res.data.token);
+            //console.log(res.data.token);
             localStorage.setItem("access-token", res.data.token);
             setLoading(false);
           });

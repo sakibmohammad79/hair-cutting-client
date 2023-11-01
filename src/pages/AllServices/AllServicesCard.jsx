@@ -17,8 +17,8 @@ const AllServicesCard = ({ service }) => {
 
   const handleServiceAdd = () => {
     if(user && user.email){
-      const addService = {name, price, image, details, serviceId: _id, email: user.email, customerName: user.displayName }
-      axios.post('http://localhost:5000/cart', addService)
+      const addServiceCart = {name, price: parseFloat(price), image, details, serviceId: _id, email: user.email, customerName: user.displayName }
+      axios.post('http://localhost:5000/cart', addServiceCart)
     .then(res => {
       console.log(res.data);
       if(res.data && res.data.insertedId){

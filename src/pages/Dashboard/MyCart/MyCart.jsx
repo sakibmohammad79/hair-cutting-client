@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 const MyCart = () => {
   const [mycart, refetch] = useCart();
 
+  const totalPrice = mycart.reduce((sum, currentValue) => sum + currentValue.price, 0)
+  console.log(totalPrice);
+
   const handleDelete = (cart) => {
     Swal.fire({
       title: "Are you sure?",
@@ -33,6 +36,13 @@ const MyCart = () => {
   };
   return (
     <div className="w-full px-24">
+      <div className="flex justify-center items-center gap-8 text-center mb-6">
+      <h3 className="text-3xl font-bold">My Total Service: {mycart.length}</h3>
+      <h3 className="text-3xl font-bold">Total Price: {totalPrice}</h3>
+      <Link to="/dashboard/payment">
+        <button className="btn btn-secondary btn-sm">Pay</button>
+      </Link>
+      </div>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -42,7 +52,6 @@ const MyCart = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Delete</th>
-              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
@@ -68,11 +77,6 @@ const MyCart = () => {
                   >
                     <FaTrashAlt size={20}></FaTrashAlt>
                   </button>
-                </th>
-                <th>
-                  <Link to="/dashboard/payment">
-                    <button className="btn btn-secondary btn-sm">Pay</button>
-                  </Link>
                 </th>
               </tr>
             ))}
